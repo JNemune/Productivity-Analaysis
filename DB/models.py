@@ -5,8 +5,6 @@
 #   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
-from datetime import datetime as gdatetime
-
 from django.db import models
 from jdatetime import datetime
 
@@ -75,8 +73,8 @@ class Session(models.Model):
         return f"{self.id} | {self.label} {duration} {timestamp}"
 
     @property
-    def gdatetime(self):
-        return gdatetime.fromtimestamp(self.timestamp / 1000)
+    def datetime(self):
+        return datetime.fromtimestamp(self.timestamp / 1000)
 
 
 class AndroidMetadata(models.Model):
